@@ -15,20 +15,6 @@ header {
     align-items: center;
 }
 
-.voltar-button {
-    background-color: #E17F1F;
-    /* Green background */
-    color: black;
-    /* White text */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100px;
-    text-decoration: none;
-}
-
 a p {
     margin: 0;
 }
@@ -71,6 +57,20 @@ nav a {
 .image-carousel img {
     width: 452px;
     border-radius: 10px;
+}
+
+.voltar-button {
+    background-color: #E17F1F;
+    /* Green background */
+    color: black;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    text-decoration: none;
 }
 
 .property-detail {
@@ -163,11 +163,25 @@ nav a {
 }
 
 .right-image {
-    
+
     animation: animaRight 1s forwards;
     top: 15%; /* Centraliza verticalmente */
     right: -100px; /* Ajusta a distância para fora da tela */
     width: 280px;
     transform: rotate(-30deg);
     z-index: -1;
+}
+
+@media (max-width: 767.98px) {
+    .principal-div {
+        flex-direction: column;
+    }
+
+    .imovel {
+        width: 200px !important;
+    }
+
+    .image-carousel {
+        width: 150% !important;
+    }
 }

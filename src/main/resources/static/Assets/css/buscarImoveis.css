@@ -132,3 +132,9 @@
                 justify-content: center;
                 gap: 5px;
             }
+
+@media (max-width: 767.98px) {
+    .input-principal {
+        width: 100%;
+    }
+}

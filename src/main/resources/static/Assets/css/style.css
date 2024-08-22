@@ -336,3 +336,86 @@ header .navigation .localizacao p {
     font-weight: bold;
     margin-left: 0.5rem;
 }
+
+@media (max-width: 767.98px) {
+
+    header .logo {
+        width: 50px;
+    }
+
+    .navigation {
+        flex-direction: column;
+        gap: 0 !important;
+        align-items: center;
+    }
+
+    .principal h2 {
+        font-size: 3rem;
+    }
+
+    .principal h1 {
+        font-size: 4rem;
+    }
+
+    .baixo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .baixo p {
+        width: 90%;
+    }
+
+    .secundaria {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .secundaria .img-esquerda {
+        width: 300px;
+        margin-top: 60px;
+    }
+
+    .secundaria .direita {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .secundaria .direita .gradiente-laranja {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .secundaria .direita h3 {
+        font-size: 2.5rem;
+        margin-left: 10px;
+    }
+
+    .secundaria .direita h3::after {
+        width: 90%;
+    }
+
+    .secundaria .final-texto {
+        width: 90% !important;
+        font-size: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    .lista-beneficios img {
+        width: 25px !important;
+    }
+
+    .botao-div a{
+        width: 200px !important;
+        font-size: 1rem !important;
+        margin-bottom: 20px;
+        text-decoration: none;
+    }
+
+}
