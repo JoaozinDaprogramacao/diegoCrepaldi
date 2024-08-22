@@ -1,0 +1,24 @@
+/* Estilo da barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+    height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Estilo do trilho da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #2c2f48; /* Cor de fundo do trilho */
+    border-radius: 10px; /* Arredondamento das bordas do trilho */
+}
+
+/* Estilo do polegar da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Cor do polegar */
+    border-radius: 10px; /* Arredondamento das bordas do polegar */
+    border: 2px solid #1F213C; /* Adiciona uma borda ao polegar */
+}
+
+/* Estilo do polegar ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do polegar ao passar o mouse */
+}
+

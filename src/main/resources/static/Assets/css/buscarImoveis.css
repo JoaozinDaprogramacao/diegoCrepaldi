@@ -1,0 +1,134 @@
+    body {
+        background-color: #1F213C;
+        overflow-x: hidden; /* Evita scroll horizontal */
+    }
+
+    header p {
+        margin-bottom: 0;
+    }
+
+    strong {
+        color: #F9932E;
+    }
+
+    .sessao-pesquisa {
+        height: 80vh;
+        position: relative;
+    }
+
+    .input-principal {
+        width: 800px;
+    }
+
+    .input-group .btn {
+        background-color: white;
+        font-weight: bold;
+    }
+
+    .input-group .btn:hover {
+        color: #080b1b;
+    }
+
+
+    .input {
+        height: 30px;
+        width: 80px;
+    }
+
+    form div label {
+        width: 80px;
+    }
+
+    .btn-primary {
+        background-color: #0D122A;
+        border-color: #080b1b;
+        width: 200px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-radius: 20px;
+    }
+
+    .extreme-image {
+        position: absolute;
+        transform: translateY(-50%); /* Ajusta o alinhamento vertical */
+    }
+
+    @keyframes animaLeft {
+        0% {
+            left: -150px;
+        } 100% {
+            left: -70px; /* Ajusta a distância para fora da tela */
+        }
+    }
+
+    .left-image {
+        animation: animaLeft 1s forwards;
+        top: 30%; /* Centraliza verticalmente */
+        left: -70px; /* Ajusta a distância para fora da tela */
+        width: 150px;
+        transform: rotate(30deg);
+        filter: blur(1px); /* Aplica o desfoque */
+    }
+
+    @keyframes animaRight {
+        0% {
+            right: -350px;
+        } 100% {
+            right: -100px; /* Ajusta a distância para fora da tela */
+        }
+    }
+
+    .right-image {
+
+        animation: animaRight 1s forwards;
+        top: 1%; /* Centraliza verticalmente */
+        right: -100px; /* Ajusta a distância para fora da tela */
+        width: 280px;
+        transform: rotate(-30deg);
+        z-index: -1;
+    }
+
+    .imoveis-disponiveis {
+        position: relative;
+    }
+
+    .detalhes {
+        color: #F9932E;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(10px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .poema h6 {
+        animation: float 2s ease-in-out infinite;
+        text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+    }
+
+         .form-filters {
+                display: none;
+                transition: max-height 0.3s ease;
+            }
+
+            .rotate {
+                transform: rotate(90deg);
+            }
+
+            .form-label {
+                cursor: pointer;
+                user-select: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }

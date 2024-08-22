@@ -1,0 +1,57 @@
+body {
+    background-color: #1F213C !important;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+.header-container  {
+    justify-content: center;
+}
+
+.card {
+    border: none;
+    height: 320px
+}
+
+.py-5 {
+    background-color: #2d2f51 !important;
+}
+
+.forms-inputs {
+    position: relative
+}
+
+.forms-inputs span {
+    position: absolute;
+    top: -18px;
+    left: 10px;
+    background-color: #2d2f51 !important;
+    color: white;
+    padding: 5px 10px;
+    font-size: 15px
+}
+
+.forms-inputs input {
+    height: 50px;
+    border: 2px solid #8b8b8b;
+    background-color: #2d2f51 !important;
+    color: white;
+}
+
+.forms-inputs input:focus {
+    box-shadow: none;
+    outline: none;
+    border: 2px solid white
+}
+
+.btn {
+    height: 50px
+}
+
+.success-data {
+    display: flex;
+    flex-direction: column
+}
+
+.bxs-badge-check {
+    font-size: 90px
+}

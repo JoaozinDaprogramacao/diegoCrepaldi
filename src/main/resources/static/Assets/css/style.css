@@ -1,0 +1,338 @@
+:root {
+    --inter-font: "Inter", sans-serif;
+    --sans-font: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    cursor: default;
+}
+
+header {
+    background-image: linear-gradient(to right, #24263C, #1A1B3A);
+    height: 119px;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+header .logo {
+    width: 100px;
+}
+
+header .navigation {
+    display: flex;
+    gap: 23px;
+}
+
+header .navigation a {
+    display: flex;
+    align-items: center;
+    font-family: var(--sans-font);
+    gap: 5px;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+header .navigation li .icone {
+    width: 35px;
+}
+
+header .navigation li p:hover {
+    color: rgb(222, 220, 220);
+}
+
+header .navigation .qm-somos a {
+    gap: 10px;
+}
+
+header .navigation .localizacao {
+    margin-left: -10px;
+}
+
+header .navigation .localizacao p {
+    margin-left: -5px;
+}
+
+.background-principal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: -1;
+}
+
+.background-principal::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.img-bg {
+    width: 33.33%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zap-div {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+    background-color: #45C554;
+    right: 30px;
+    bottom: 30px;
+}
+
+.zap-div img {
+    width: 39px;
+}
+
+.principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 119px);
+    padding-top: 119px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.cima h2,
+.cima h1 {
+    font-family: var(--inter-font);
+    font-weight: bold;
+    text-align: center;
+}
+
+.gradiente-amarelo {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #F2E205, #E2D300);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradiente-amarelo h2 {
+    font-size: 5rem;
+}
+
+.cima h1 {
+    color: white;
+    font-size: 6rem;
+}
+
+.baixo {
+    margin-top: 50px;
+}
+
+.baixo p {
+    display: block;
+    width: 505px;
+    font-size: 26px;
+    font-family: var(--sans-font);
+    color: white;
+    text-align: center;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.principal .seta-baixo {
+    font-size: 26px;
+    font-family: var(--inter-font);
+    color: white;
+    margin-top: 60px;
+    font-weight: bold;
+    animation: float 2s ease-in-out infinite;
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+}
+
+.secundaria {
+    position: relative;
+    /* Use relative para que o ::before posicione-se corretamente */
+    height: 100vh;
+    width: 100%;
+    background-image: url("../imgs/textura-azul.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    gap: 100px;
+    overflow: hidden;
+    /* Garante que a camada não transborde */
+}
+
+.secundaria::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1f213cc7;
+    /* Camada preta com transparência */
+    z-index: -1;
+    /* Mantém a camada abaixo do conteúdo */
+}
+
+
+.secundaria-content {
+    z-index: 3;
+}
+
+@keyframes entradaImg {
+    0% {
+        opacity: 0;
+        transform: translate(-500px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+.secundaria .img-esquerda {
+    width: 480px;
+    border-radius: 10%;
+    animation: entradaImg 0.5s forwards;
+}
+
+@keyframes direitaEntrada {
+    0% {
+        opacity: 0;
+        transform: translate(500px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.secundaria .direita {
+    animation: direitaEntrada 0.5s forwards;
+}
+
+.gradiente-laranja {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #F9932E, #E17F1F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.secundaria .direita h3 {
+    font-family: var(--inter-font);
+    font-size: 5rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.secundaria .direita h3::after {
+    content: "";
+    display: block;
+    width: 630px;
+    height: 2px;
+    background-image: linear-gradient(to right, #000000, #1E2240);
+    margin-top: 20px;
+
+}
+
+
+.secundaria .direita .final-texto {
+    font-family: var(--sans-font);
+    color: white;
+    font-size: 1.9rem;
+    width: 580px;
+    text-align: center;
+}
+
+.secundaria .direita .lista-beneficios {
+    margin-top: 50px;
+}
+
+.secundaria .direita .lista-beneficios li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.secundaria .direita .lista-beneficios li img {
+    width: 50px;
+}
+
+.secundaria .direita .lista-beneficios li p {
+    font-family: var(--sans-font);
+    color: white;
+    font-size: 1.3rem;
+}
+
+.secundaria .botao-div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secundaria .botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0D122A;
+    font-family: var(--sans-font);
+    color: white;
+    font-size: 1.4rem;
+    width: 500px;
+    height: 80px;
+    border-radius: 50px;
+    margin-top: 40px;
+    cursor: pointer
+}
+
+.secundaria .botao strong {
+    font-weight: bold;
+    margin-left: 0.5rem;
+}

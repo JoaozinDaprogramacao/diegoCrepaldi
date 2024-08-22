@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Assets/css/reset.css">
+    <link rel="stylesheet" href="/Assets/css/style.css">
+    <link rel="stylesheet" href="/Assets/css/scroll.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="/Assets/css/buscarImoveis.css">
+    <script src="/Assets/js/buscaImoveis.js" defer></script>
+    <link rel="shortcut icon" href="/Assets/imgs/logo.png" type="image/x-icon">
+    <title>Pesquisar Imóveis</title>
+</head>
+
+<body>
+    <header>
+    <div class="header-container">
+        <img class="logo" src="/Assets/imgs/logo.png" alt="logo">
+        <ul class="navigation">
+            <li>
+                <a href="/index">
+                    <img class="icone" src="/Assets/imgs/casa.png" alt="página inicial">
+                    <p>Inicial</p>
+                </a>
+
+            </li>
+            <li class="qm-somos">
+                <a href="qmSomos.html">
+                    <img class="icone" src="/Assets/imgs/qm-somos-nos.png" alt="página quem somos nós">
+                    <p>Quem Somos</p>
+                </a>
+            </li>
+            <li class="localizacao">
+                <a href="">
+                    <img class="icone" src="/Assets/imgs/localizacao.png" alt="página localização">
+                    <p>localização</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+    <section id="pesquisa" class="sessao-pesquisa">
+        <form class="container d-flex align-items-center justify-content-center flex-column mt-5" th:action="@{/imoveis/pesquisa}"
+              method="get">
+            <h1 class="text-light text-center">Encontre o seu imóvel <strong>ideal</strong>!</h1>
+            <div class="input-group mb-3 mt-4 input-principal">
+                <!-- Botão do Dropdown -->
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Apartamento
+                </button>
+                <!-- Menu Dropdown -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#" data-value="apartamento">Apartamento</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="casa">Casa</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="lote">Lote</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="arearural">Área Rural</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="chacara">Chácara</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="pontocomercial">Ponto Comercial</a></li>
+                </ul>
+                <!-- Campo oculto para enviar o valor selecionado -->
+                <input type="hidden" name="tipo-imovel" id="tipo-imovel" value="apartamento">
+                <!-- Campo de pesquisa -->
+                <select class="form-control" id="cidade-select" name="input-pesquisa">
+                    <option value="" disabled selected>Selecione uma cidade...</option>
+                    <option value="janauba">Janaúba</option>
+                    <option value="moc">Montes Claros</option>
+                    <option value="ls">Lagoa Santa</option>
+                </select>
+            </div>
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
+            </div>
+            <label class="form-label text-light text-center" id="toggleBtn">
+                Filtros (opcionais) <span id="arrow">&#9654;</span>
+            </label>
+            <div class="form-filters" id="formFilters" style="display:none;">
+                <div class="d-flex align-items-center justify-content-center flex-column text-left">
+                    <div class="mb-3 mt-3 d-flex gap-3">
+                        <label for="valor" class="form-label text-light text-center">Valor</label>
+                        <input type="number" class="form-control input" placeholder="min." id="valor" name="valormin">
+                        <input type="number" class="form-control input" placeholder="max." id="valormax" name="valormax">
+                    </div>
+                    <div class="mb-3 mt-2 d-flex gap-3">
+                        <label for="quartos" class="form-label text-light text-center">Quartos</label>
+                        <input type="number" class="form-control input" placeholder="min." id="quartos" name="quartosmin">
+                        <input type="number" class="form-control input" placeholder="max." id="quartosmax"
+                               name="quartosmax">
+                    </div>
+                    <div class="mb-3 mt-2 d-flex gap-3">
+                        <label for="area" class="form-label text-light text-center">Espaço (m²)</label>
+                        <input type="number" class="form-control input" placeholder="min." id="area" name="areamin">
+                        <input type="number" class="form-control input" placeholder="max." id="areamax" name="areamax">
+                    </div>
+                    <div class="mb-3 mt-2 d-flex gap-3">
+                        <label for="banheiros" class="form-label text-light text-center">Banheiros</label>
+                        <input type="number" class="form-control input" placeholder="min." id="banheiros" name="banheirosmin">
+                        <input type="number" class="form-control input" placeholder="max." id="banheirosMax" name="banheirosmax">
+                    </div>
+                    <div class="mb-3 mt-2 d-flex gap-3">
+                        <label for="bairro" class="form-label text-light text-center">Bairro</label>
+                        <input type="text" class="form-control input" placeholder="" id="bairro" name="bairro"
+                               style="width: 100px;">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-5">Pesquisar</button>
+            <img src="/Assets/imgs/maquete3.png" alt="imagem 1" class="extreme-image left-image">
+
+            <img src="/Assets/imgs/maquete2.png" alt="imagem 2" class="extreme-image right-image">
+
+        </form>
+    </section>
+    <div class="poema d-flex align-items-center justify-content-center mb-5 mt-5">
+        <h6 class="text-center text-light fs-4" style="width: 60%;">"Os <strong>imóveis</strong> são mais do que estruturas
+            de tijolos e
+            cimento; são a moldura onde a vida se desenha, o palco onde
+            <strong>sonhos</strong> se encenam e a base onde o futuro é esculpido."</h6>
+    </div>
+    <h3 class="text-center mb-5 fs-2 fw-bold" style="color: #F9932E">Resultados</h3>
+    <section class="imoveis-disponiveis container mb-4">
+        <div class="row g-4" th:if="${imoveis}">
+            <div class="col-md-4" th:each="imovel : ${imoveis}">
+                <div class="card" style="width: 100%;">
+                    <img th:src="@{'/Assets/imgs/' + ${imovel.imagem}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${imovel.titulo}">Alugar</h5>
+                        <h6 class="card-subtitle" th:text="'Banheiros: ' + ${imovel.banheiros} + ', Quartos: ' + ${imovel.quartos} + ', Área: ' + ${imovel.area} + 'm²'">Detalhes</h6>
+                        <h6 class="card-subtitle" th:text="${imovel.detalhes}">Detalhes</h6>
+                        <p id="preco-label" class="card-text mt-2" th:text="${imovel.descricao}">Descrição</p>
+                        <div class="baixo d-flex align-items-center justify-content-between">
+                            <label class="fs-4" th:text="${'R$ ' + imovel.preco}" style="color: #F9932E">R$ 1000,00</label>
+                            <form method="get" th:action="@{'/detalhes/' + ${imovel.id}}">
+                                <button type="submit" class="btn detalhes">Ver detalhes</button>
+                                <input type="hidden" name="imoveis" th:value="imoveis">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+</body>
+
+</html>

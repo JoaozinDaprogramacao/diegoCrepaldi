@@ -1,0 +1,51 @@
+body {
+    background-color: #1F213C !important;
+    overflow-x: hidden;
+    /* Evita scroll horizontal */
+}
+
+.header-container {
+    justify-content: center;
+}
+
+form h1 {
+    color: #F9932E;
+}
+
+.inputs input {
+    width: 500px;
+}
+
+.upload-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.drop-area {
+    padding: 20px;
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    background-color: #e9ecef;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drop-area:hover {
+    background-color: #d0d5dd;
+}
+
+.drop-area p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#gallery img {
+    max-width: 300px;
+    margin: 10px;
+}

@@ -1,0 +1,173 @@
+body {
+    background-color: #24263C !important;
+    /* Dark blue background */
+    font-family: Arial, sans-serif;
+    color: #FFFFFF;
+    /* White text */
+}
+
+header {
+    background-color: #FFC107;
+    /* Orange background */
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.voltar-button {
+    background-color: #E17F1F;
+    /* Green background */
+    color: black;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    text-decoration: none;
+}
+
+a p {
+    margin: 0;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #FFFFFF;
+    /* White text */
+    text-decoration: none;
+}
+
+.property-listing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.image-carousel {
+    width: 50%;
+}
+
+.image-carousel img {
+    width: 452px;
+    border-radius: 10px;
+}
+
+.property-detail {
+    width: 700px;
+}
+
+.property-details p{
+    text-align: center;
+    width: 300px;
+    color: white;
+}
+
+.descricao {
+    font-weight: bold;
+}
+
+.property-details h2 {
+    margin-top: 0;
+}
+
+.valor {
+    margin-top: 20px;
+}
+
+.valor p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #45C554
+}
+
+.whatsapp-button {
+    background-color: #2D7435;
+    /* Green background */
+    color: #FFFFFF;
+    /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 250px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.whatsapp-button img {
+    width: 39px;
+}
+
+.whatsapp-button:hover {
+    background-color: #2E865F;
+    /* Darker green background */
+}
+
+
+.extreme-image {
+    position: absolute;
+    transform: translateY(-50%); /* Ajusta o alinhamento vertical */
+}
+
+@keyframes animaLeft {
+    0% {
+        left: -150px;
+    } 100% {
+        left: -70px; /* Ajusta a distância para fora da tela */
+    }
+}
+
+.left-image {
+    animation: animaLeft 1s forwards;
+    top: 60%; /* Centraliza verticalmente */
+    left: -70px; /* Ajusta a distância para fora da tela */
+    width: 150px;
+    transform: rotate(30deg);
+    filter: blur(1px); /* Aplica o desfoque */
+}
+
+@keyframes animaRight {
+    0% {
+        right: -350px;
+    } 100% {
+        right: -100px; /* Ajusta a distância para fora da tela */
+    }
+}
+
+.right-image {
+    
+    animation: animaRight 1s forwards;
+    top: 15%; /* Centraliza verticalmente */
+    right: -100px; /* Ajusta a distância para fora da tela */
+    width: 280px;
+    transform: rotate(-30deg);
+    z-index: -1;
+}
