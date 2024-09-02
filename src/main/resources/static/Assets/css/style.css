@@ -130,21 +130,14 @@ header .navigation .localizacao p {
     text-align: center;
 }
 
-.gradiente-amarelo {
-    font-size: 48px;
-    font-weight: bold;
-    background: linear-gradient(to right, #F2E205, #E2D300);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
-.gradiente-amarelo h2 {
-    font-size: 5rem;
+.gradiente-laranja h2 {
+    font-size: 6rem;
 }
 
 .cima h1 {
     color: white;
-    font-size: 6rem;
+    font-size: 5rem;
 }
 
 .baixo {

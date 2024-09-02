@@ -39,8 +39,16 @@
         <button class="close-btn" onclick="toggleSidebar()">&times;</button>
         <ul>
             <li><a href="/cadastrar/imoveis">Adicionar Imóvel</a></li>
+            <li><a href="/users/cadastrar">Cadastrar Administrador</a></li>
+            <li>
+                <a href="#" onclick="document.getElementById('logout-form').submit()">Deslogar</a>
+                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                </form>
+            </li>
         </ul>
     </div>
+
 </body>
 
 </html>
