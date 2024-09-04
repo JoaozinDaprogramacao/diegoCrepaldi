@@ -51,5 +51,3 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
                 hiddenInput.value = selectedItemValue;
             });
         });
-
-

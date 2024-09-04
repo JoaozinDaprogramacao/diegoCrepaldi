@@ -1,10 +1,10 @@
 package com.br.crepaldi.imobiliaria.expositor.imovel;
 
-import com.br.crepaldi.imobiliaria.expositor.imovel.cadastrar.ImovelDtoCadastro;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "imoveis")
@@ -25,22 +25,25 @@ public class Imovel {
     private BigDecimal banheiros;
     private BigDecimal area;
     private String titulo;
-    private String imagem;
+    @ElementCollection
+    private List<String> imagens;
+    private String imagem_capa;
     private String detalhes;
     private String descricao;
 
     public Imovel(TipoImovel tipoImovel, String inputPesquisa,
                   BigDecimal preco, BigDecimal quartos, BigDecimal banheiros, BigDecimal area, String titulo,
-                  String imagem, String detalhes, String descricao) {
+                  List<String> imagem, String imagem_capa, String detalhes, String descricao) {
         this.tipoImovel = tipoImovel;
         this.inputPesquisa = inputPesquisa;
         this.area = area;
         this.titulo = titulo;
-        this.imagem = imagem;
+        this.imagens = imagem;
         this.detalhes = detalhes;
         this.descricao = descricao;
         this.preco = preco;
         this.quartos = quartos;
         this.banheiros = banheiros;
+        this.imagem_capa = imagem_capa;
     }
 }

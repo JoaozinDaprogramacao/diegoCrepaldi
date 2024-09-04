@@ -79,8 +79,6 @@ public class ImoveisController {
 
         List<Imovel> imoveis = imovelService.findImoveisComCascata(dto);
 
-
-
         model.addAttribute("imoveis", imoveis);
 
         return "buscarImoveis";

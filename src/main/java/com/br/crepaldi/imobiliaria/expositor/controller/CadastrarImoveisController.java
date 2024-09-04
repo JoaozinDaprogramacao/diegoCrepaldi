@@ -34,6 +34,7 @@ public class CadastrarImoveisController {
         model.addAttribute("param", param);
 
         if (result.hasErrors()) {
+            System.out.println(result.getAllErrors());
             model.addAttribute("errors", result.getAllErrors());
             System.out.println(result.getAllErrors());
             return "adicionarImoveis"; // Retorna o HTML para mostrar os erros

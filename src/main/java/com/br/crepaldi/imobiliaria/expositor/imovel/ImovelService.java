@@ -14,12 +14,14 @@ public class ImovelService {
 
     public List<Imovel> findImoveisComCascata(ImovelDto dto) {
 
-    List<Imovel> imoveis = imovelRepository.findAll();
-
-     imoveis = VerificaEmCascata(imoveis, dto);
+        List<Imovel> imoveis = imovelRepository.findAll();
 
 
-     return imoveis;
+        imoveis.forEach(i -> System.out.println("Imagns" + i.getImagens()));
+
+         imoveis = VerificaEmCascata(imoveis, dto);
+
+         return imoveis;
     }
 
     private List<Imovel> VerificaEmCascata(List<Imovel> imoveis, ImovelDto dto) {

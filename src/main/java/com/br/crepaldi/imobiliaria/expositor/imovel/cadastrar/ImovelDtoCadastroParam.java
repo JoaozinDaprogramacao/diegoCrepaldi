@@ -2,12 +2,13 @@ package com.br.crepaldi.imobiliaria.expositor.imovel.cadastrar;
 
 import com.br.crepaldi.imobiliaria.expositor.imovel.Imovel;
 import com.br.crepaldi.imobiliaria.expositor.imovel.TipoImovel;
-import com.br.crepaldi.imobiliaria.expositor.imovel.validacao.FileNotEmpty;
+import com.br.crepaldi.imobiliaria.expositor.validacao.ListBlank;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record ImovelDtoCadastroParam(
         @NotBlank(message = "Selecione o tipo do imóvel.")
@@ -24,18 +25,17 @@ public record ImovelDtoCadastroParam(
         String area,
         @NotBlank(message = "Escreva o titulo do imóvel.")
         String titulo,
-        @FileNotEmpty(message = "Por favor, faça o upload de uma imagem.")
-        MultipartFile imagem,
+        List<MultipartFile> imagem,
         @NotBlank(message = "Escreva detalhes os detalhes.")
         String detalhes,
         @NotBlank(message = "Insira uma descrição.")
         String descricao
 ) {
-    public static Imovel toImovel(ImovelDtoCadastroParam dto, String fileName) {
+    public static Imovel toImovel(ImovelDtoCadastroParam dto, List<String> fileName) {
 
         return new Imovel(TipoImovel.valueOf(dto.tipoImovel), dto.inputPesquisa, new BigDecimal(dto.preco),
                 new BigDecimal(dto.quartos), new BigDecimal(dto.banheiros) ,new BigDecimal(dto.area),
-                      dto.titulo, fileName, dto.detalhes, dto.descricao);
+                      dto.titulo, fileName, fileName.get(0), dto.detalhes, dto.descricao);
 
     }
 }

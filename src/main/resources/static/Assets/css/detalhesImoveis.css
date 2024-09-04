@@ -45,18 +45,21 @@ nav a {
 
 .property-listing {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 2em;
 }
 
 .image-carousel {
     width: 50%;
+    text-align: center; /* Centraliza as imagens dentro do carrossel */
 }
 
-.image-carousel img {
-    width: 452px;
-    border-radius: 10px;
+.carousel-item img {
+    display: inline-block; /* Garante que as imagens se alinhem ao centro */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    height: auto;
+    border-radius: 20px;
 }
 
 .voltar-button {
@@ -171,6 +174,7 @@ nav a {
     transform: rotate(-30deg);
     z-index: -1;
 }
+
 
 @media (max-width: 767.98px) {
     .principal-div {

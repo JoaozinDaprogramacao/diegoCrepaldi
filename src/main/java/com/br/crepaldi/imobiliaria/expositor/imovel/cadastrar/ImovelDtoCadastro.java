@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 
 public record ImovelDtoCadastro(
         @NotBlank(message = "Digite o tipo do imóvel.")
@@ -40,6 +41,6 @@ public record ImovelDtoCadastro(
 ) {
     public static Imovel toImovel(ImovelDtoCadastro dto) {
         return new Imovel(dto.tipoImovel, dto.inputPesquisa, dto.preco, dto.quartos,
-                dto.banheiros,dto.area, dto.titulo, dto.imagem, dto.detalhes, dto.descricao);
+                dto.banheiros,dto.area, dto.titulo, Collections.singletonList(dto.imagem), dto.imagem, dto.detalhes, dto.descricao);
     }
 }

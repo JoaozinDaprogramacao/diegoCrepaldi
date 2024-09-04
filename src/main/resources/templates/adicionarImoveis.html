@@ -33,10 +33,11 @@
         <div id="gallery"></div>
         <!-- Exibição de erros -->
         <div th:if="${errors != null}" class="d-flex align-items-center justify-content-center">
-            <div th:each="error : ${errors}" th:if="${error.field == 'imagem'}" class="alert alert-danger mt-2" role="alert">
+            <div th:each="error : ${errors}" class="alert alert-danger mt-2" role="alert">
                 <span th:text="${error.defaultMessage}"></span>
             </div>
         </div>
+
     </div>
 
     <div class="inputs mt-5">
@@ -62,8 +63,10 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="#" data-value="apartamento">Apartamento</a></li>
                     <li><a class="dropdown-item" href="#" data-value="casa">Casa</a></li>
-                    <li><a class="dropdown-item" href="#" data-value="hotel">Hotel</a></li>
-                    <li><a class="dropdown-item" href="#" data-value="motel">Motel</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="lote">Lote</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="arearural">Área Rural</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="chacara">Chácara</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="pontocomercial">Ponto Comercial</a></li>
                 </ul>
                 <input type="hidden" name="tipoImovel" id="tipo-imovel" value="apartamento" th:field="*{tipoImovel}">
             </div>

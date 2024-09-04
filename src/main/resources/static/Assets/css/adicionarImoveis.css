@@ -12,9 +12,6 @@ form h1 {
     color: #F9932E;
 }
 
-.inputs input {
-    width: 500px;
-}
 
 .upload-container {
     width: 100%;
@@ -22,18 +19,6 @@ form h1 {
     text-align: center;
 }
 
-.drop-area {
-    padding: 20px;
-    border: 2px dashed #007bff;
-    border-radius: 10px;
-    background-color: #e9ecef;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.drop-area:hover {
-    background-color: #d0d5dd;
-}
 
 .drop-area p {
     margin: 0;
@@ -45,7 +30,33 @@ input[type="file"] {
     display: none;
 }
 
+
+/* Adicione essas classes ao seu arquivo CSS */
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
 #gallery img {
-    max-width: 300px;
-    margin: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#drop-area {
+    border: 2px dashed #6E729C;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+#drop-area:hover {
+    border-color: #276619;
 }

@@ -126,7 +126,7 @@
         <div class="row g-4" th:if="${imoveis}">
             <div class="col-md-4" th:each="imovel : ${imoveis}">
                 <div class="card" style="width: 100%;">
-                    <img th:src="@{'/Assets/imgs/' + ${imovel.imagem}}" class="card-img-top" alt="...">
+                    <img th:src="@{/Assets/imgs/{image}(image=${imovel.imagem_capa})}" style="width: 414px;height: 310px;" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${imovel.titulo}">Alugar</h5>
                         <h6 class="card-subtitle" th:text="'Banheiros: ' + ${imovel.banheiros} + ', Quartos: ' + ${imovel.quartos} + ', Área: ' + ${imovel.area} + 'm²'">Detalhes</h6>

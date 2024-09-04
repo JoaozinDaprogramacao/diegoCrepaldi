@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CadastrarImoveisService {
@@ -22,30 +24,45 @@ public class CadastrarImoveisService {
 
     public ResponseEntity<ImovelDtoCadastroParam> cadastrar(ImovelDtoCadastroParam dto) throws IOException {
 
-        MultipartFile imagem = dto.imagem();
-        String fileName = imagem.getOriginalFilename();
-        Path uploadPath = Paths.get("Assets/imgs/imoveis");
+        List<MultipartFile> imagens = dto.imagem();
+        List<String> nomesImagens = new ArrayList<>();
 
-        // Verifica e cria diretório se não existir
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+
+        Path uploadPath = Paths.get("src\\main\\resources\\static\\Assets\\imgs\\imoveis");
+
+        System.out.println("Caminho do upload: " + uploadPath.toAbsolutePath());
+        System.out.println("Imagens recebidas: " + imagens.size());
+
+        for (MultipartFile imagem : imagens) {
+            String fileName = imagem.getOriginalFilename();
+            System.out.println("Processando imagem: " + fileName);
+            Path filePath = uploadPath.resolve(fileName);
+
+            if (fileName.isBlank()) {
+                String imagemPadrao = "indisponivel.jpg";
+                filePath = uploadPath.resolve(imagemPadrao);
+                nomesImagens.add(imagemPadrao);
+            }
+
+            if (Files.exists(filePath)) {
+                System.out.println("Arquivo existente, removendo: " + filePath);
+                Files.delete(filePath);
+            }
+
+            try (var inputStream = imagem.getInputStream()) {
+                Files.copy(inputStream, filePath);
+                System.out.println("Arquivo salvo em: " + filePath);
+            }
+
+            nomesImagens.add(fileName);
         }
 
-        // Cria o caminho completo do arquivo
-        Path filePath = uploadPath.resolve(fileName);
+        System.out.println("Nomes das imagens salvas: " + nomesImagens);
 
-        // Remove o arquivo existente, se houver
-        if (Files.exists(filePath)) {
-            Files.delete(filePath);
-        }
 
-        // Salva o arquivo
-        try (var inputStream = imagem.getInputStream()) {
-            Files.copy(inputStream, filePath);
-        }
+        // Cria e salva o imóvel com a lista de nomes de imagens
+        Imovel imovel = ImovelDtoCadastroParam.toImovel(dto, nomesImagens);
 
-        // Cria e salva o imóvel
-        Imovel imovel = ImovelDtoCadastroParam.toImovel(dto, fileName);
         repository.save(imovel);
 
         return ResponseEntity.ok(dto);
