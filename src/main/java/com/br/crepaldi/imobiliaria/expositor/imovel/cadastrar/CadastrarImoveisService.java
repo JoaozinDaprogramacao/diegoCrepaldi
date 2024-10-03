@@ -27,7 +27,6 @@ public class CadastrarImoveisService {
         List<MultipartFile> imagens = dto.imagem();
         List<String> nomesImagens = new ArrayList<>();
 
-
         Path uploadPath = Paths.get("src\\main\\resources\\static\\Assets\\imgs\\imoveis");
 
         System.out.println("Caminho do upload: " + uploadPath.toAbsolutePath());
@@ -35,30 +34,34 @@ public class CadastrarImoveisService {
 
         for (MultipartFile imagem : imagens) {
             String fileName = imagem.getOriginalFilename();
+
+            // Caso o nome do arquivo esteja em branco, utilizar imagem padrão
+            if (fileName == null || fileName.isBlank()) {
+                fileName = "indisponivel.jpg"; // Nome da imagem padrão
+            }
+
             System.out.println("Processando imagem: " + fileName);
             Path filePath = uploadPath.resolve(fileName);
 
-            if (fileName.isBlank()) {
-                String imagemPadrao = "indisponivel.jpg";
-                filePath = uploadPath.resolve(imagemPadrao);
-                nomesImagens.add(imagemPadrao);
-            }
-
-            if (Files.exists(filePath)) {
+            // Apenas remover o arquivo se ele não for a imagem padrão
+            if (!fileName.equals("indisponivel.jpg") && Files.exists(filePath)) {
                 System.out.println("Arquivo existente, removendo: " + filePath);
                 Files.delete(filePath);
             }
 
-            try (var inputStream = imagem.getInputStream()) {
-                Files.copy(inputStream, filePath);
-                System.out.println("Arquivo salvo em: " + filePath);
+            // Copia a nova imagem para o diretório, exceto se for a imagem padrão
+            if (!fileName.equals("indisponivel.jpg")) {
+                try (var inputStream = imagem.getInputStream()) {
+                    Files.copy(inputStream, filePath);
+                    System.out.println("Arquivo salvo em: " + filePath);
+                }
             }
 
+            // Adiciona o nome da imagem (ou o nome da imagem padrão)
             nomesImagens.add(fileName);
         }
 
         System.out.println("Nomes das imagens salvas: " + nomesImagens);
-
 
         // Cria e salva o imóvel com a lista de nomes de imagens
         Imovel imovel = ImovelDtoCadastroParam.toImovel(dto, nomesImagens);
@@ -67,4 +70,5 @@ public class CadastrarImoveisService {
 
         return ResponseEntity.ok(dto);
     }
+
 }
