@@ -17,9 +17,23 @@ public class CadastrarImoveisService {
 
     private final CadastrarImoveisRepository repository;
 
+    // Diretório externo para armazenamento de imagens no Linux
+    private final String uploadDir = System.getProperty("user.home") + "/imoveis/uploads/";
+
     // Construtor para injeção de dependência
     public CadastrarImoveisService(CadastrarImoveisRepository repository) {
         this.repository = repository;
+
+        // Verifica se o diretório existe, se não, cria o diretório
+        Path uploadPath = Paths.get(uploadDir);
+        if (!Files.exists(uploadPath)) {
+            try {
+                Files.createDirectories(uploadPath);
+                System.out.println("Diretório de upload criado: " + uploadPath);
+            } catch (IOException e) {
+                throw new RuntimeException("Não foi possível criar o diretório de upload", e);
+            }
+        }
     }
 
     public ResponseEntity<ImovelDtoCadastroParam> cadastrar(ImovelDtoCadastroParam dto) throws IOException {
@@ -27,23 +41,21 @@ public class CadastrarImoveisService {
         List<MultipartFile> imagens = dto.imagem();
         List<String> nomesImagens = new ArrayList<>();
 
-        Path uploadPath = Paths.get("src\\main\\resources\\static\\Assets\\imgs\\imoveis");
-
-        System.out.println("Caminho do upload: " + uploadPath.toAbsolutePath());
+        System.out.println("Caminho do upload: " + uploadDir);
         System.out.println("Imagens recebidas: " + imagens.size());
 
         for (MultipartFile imagem : imagens) {
             String fileName = imagem.getOriginalFilename();
 
-            // Caso o nome do arquivo esteja em branco, utilizar imagem padrão
+            // Caso o nome do arquivo esteja em branco, usar uma imagem padrão
             if (fileName == null || fileName.isBlank()) {
                 fileName = "indisponivel.jpg"; // Nome da imagem padrão
             }
 
             System.out.println("Processando imagem: " + fileName);
-            Path filePath = uploadPath.resolve(fileName);
+            Path filePath = Paths.get(uploadDir).resolve(fileName);
 
-            // Apenas remover o arquivo se ele não for a imagem padrão
+            // Se o arquivo já existir e não for a imagem padrão, remover o arquivo
             if (!fileName.equals("indisponivel.jpg") && Files.exists(filePath)) {
                 System.out.println("Arquivo existente, removendo: " + filePath);
                 Files.delete(filePath);
